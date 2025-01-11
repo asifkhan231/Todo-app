@@ -24,7 +24,7 @@ function TodoContext({ children }) {
         if (token && isTokenExpired(token)) {
             localStorage.removeItem('access_token')
         }
-    })
+    },[token])
 
     const handleSnackbarClose = () => {
         setAlertMsg(pre => ({ ...pre, snackbarOpen: false }))
