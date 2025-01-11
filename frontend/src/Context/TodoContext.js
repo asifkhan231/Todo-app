@@ -23,7 +23,6 @@ function TodoContext({ children }) {
     useEffect(() => {
         if (token && isTokenExpired(token)) {
             localStorage.removeItem('access_token')
-            navigator('/login')
         }
     })
 
