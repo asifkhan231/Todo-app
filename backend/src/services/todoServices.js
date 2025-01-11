@@ -4,9 +4,9 @@ import newConnection from "../config/dbConnection.js";
 const db = await newConnection();
 const addTodo = async (req, res) => {
     try {
-        const { todo } = req.body;
-        const addQuery = `INSERT INTO Todos (task) VALUES (?)`
-        const [result] = await db.execute(addQuery, [todo])
+        const { userId,todo } = req.body;
+        const addQuery = `INSERT INTO Todos (userId,task) VALUES (?,?)`
+        const [result] = await db.execute(addQuery, [userId,todo])
         res.status(201).json({ message: 'Todo added successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Something went wrong', error: error.message });
@@ -15,8 +15,9 @@ const addTodo = async (req, res) => {
 
 const getAllTodos = async (req, res) => {
     try {
-        const getQuery = `SELECT * FROM Todos`
-        const [result] = await db.execute(getQuery)
+        const {userId} = req.query
+        const getQuery = `SELECT * FROM Todos   WHERE userId = ?`
+        const [result] = await db.execute(getQuery,[userId])
         res.status(200).json({ todoList: result, message: 'Todo list fetched successfully' });
     }
     catch (error) {

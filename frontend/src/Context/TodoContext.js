@@ -6,7 +6,6 @@ import isTokenExpired from '../Components/IsTokenExpired'
 const todoContext = createContext()
 
 function TodoContext({ children }) {
-    const [userId, setUserId] = useState('')
     const [todos, setTodos] = useState([])
     const [listData, setListData] = useState([])
     const [alertMsg, setAlertMsg] = useState({
@@ -19,10 +18,14 @@ function TodoContext({ children }) {
     const todoUrl = 'http://localhost:3030/todos'
 
     const token = localStorage.getItem('access_token')
+    const user_Id = localStorage.getItem('user_Id')
 
     useEffect(() => {
         if (token && isTokenExpired(token)) {
-            localStorage.removeItem('access_token')
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('user_Id')
+            setAlertMsg({ snackbarOpen: true, alertSeverity: 'error', alertMessage: 'Session expired. Please log in again.' });
+            window.location.href = '/login'; 
         }
     },[token])
 
@@ -49,10 +52,11 @@ function TodoContext({ children }) {
         try {
             const response = await axios.post(`${userUrl}/login`, data)
             if (response.status === 200) {
-                let saveToken = localStorage.setItem('access_token', response.data.token)
-                setUserId(response.data.userId)
-                setAlertMsg({ snackbarOpen: true, alertSeverity: 'success', alertMessage: response.data.message })
-                if (saveToken) {
+                const {token,userId,message} = response.data
+                let saveToken = localStorage.setItem('access_token', token)
+                let saveUserId = localStorage.setItem('user_Id',userId)
+                setAlertMsg({ snackbarOpen: true, alertSeverity: 'success', alertMessage: message })
+                if (saveToken && saveUserId) {
                     await getAllTodos()
                 }
             } else {
@@ -65,7 +69,7 @@ function TodoContext({ children }) {
     }
 
     const addTodo = async (data) => {
-        console.log(token)
+        let userId = user_Id
         try {
             const response = await axios.post(`${todoUrl}/add`, { userId, todo: data }, {
                 headers: {
@@ -80,13 +84,13 @@ function TodoContext({ children }) {
             }
         } catch (error) {
             console.log(error)
-            setAlertMsg({ snackbarOpen: true, alertSeverity: 'error', alertMessage: error.response.data.message })
+            setAlertMsg({ snackbarOpen: true, alertSeverity: 'error', alertMessage: error.response?.data.message })
         }
     }
 
     const getAllTodos = async () => {
         try {
-            const response = await axios.get(`${todoUrl}/alltodos`, {
+            const response = await axios.get(`${todoUrl}/alltodos?userId=${user_Id}`, {
                 headers: {
                     access_token: `Bearer ${token}`
                 }

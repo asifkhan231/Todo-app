@@ -54,12 +54,7 @@ Ensure you have Node.js and npm installed.
    - **src/**: Contains components, services, and utility files.
    - **public/**: Holds static files.
 
-5. **Environment Variables**:
-   Create a `.env` file in the root of the `frontend` directory to store environment variables:
-   ```env
-   REACT_APP_API_URL=http://localhost:8080/api
-   ```\
-6. **LocalHost**:
+5. **LocalHost**:
    frontend will run on localhost:
    ```PORT
    http://localhost:3000
@@ -121,6 +116,7 @@ Ensure you have Node.js, npm, and a SQL database installed.
    ```sql
    CREATE TABLE todos (
        id INT AUTO_INCREMENT PRIMARY KEY,
+       userId INT NOT NULL,
        task VARCHAR(255),
        isComplete BOOLEAN DEFAULT false,
        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
