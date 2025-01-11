@@ -129,12 +129,13 @@ Ensure you have Node.js, npm, and a SQL database installed.
 
     Use the following SQL command to create the `users` table:
    ```sql
-  CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+   CREATE TABLE users (
+       id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
-);
+   );
+ 
    ```
 
 7. **API Endpoints**:
