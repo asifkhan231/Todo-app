@@ -127,13 +127,25 @@ Ensure you have Node.js, npm, and a SQL database installed.
    );
    ```
 
+    Use the following SQL command to create the `users` table:
+   ```sql
+  CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL
+);
+   ```
+
 7. **API Endpoints**:
 
-   - **POST /api/todos**: Add a new task.
-   - **GET /api/todos**: Fetch all tasks.
-   - **PATCH /api/todos/:id**: Update task completion status.
-   - **DELETE /api/todos/:id**: Delete a task.
+   - **POST /api/todos/add**: Add a new task.
+   - **GET /api/todos/alltodos**: Fetch all tasks.
+   - **PATCH /api/todos/update/:id**: Update task completion status.
+   - **DELETE /api/todos/delete/:id**: Delete a task.
 
+- **POST /api/users/signup**: Add a new task.
+- **POST /api/users/login**: Add a new task.
 ---
 
 ## Running the Full Project
