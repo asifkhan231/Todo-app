@@ -1,0 +1,76 @@
+.form__container{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.todo__form {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo__input__box {
+  padding: 1rem;
+  width: 70%;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+.add__btn {
+  padding: 1rem;
+  font-size: 1rem;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add__btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  color: white;
+  border: 1px solid #000000;
+}
+
+select {
+  width: 10rem;
+  cursor: pointer;
+  padding: 1rem
+}
+
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  background: #000000;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.select:hover::after {
+  background: rgb(0, 0, 0, 0.8);
+
+}

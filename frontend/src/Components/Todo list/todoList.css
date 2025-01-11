@@ -1,0 +1,42 @@
+.todo__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.todo__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:whitesmoke;
+    padding: 0.3rem 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.todo__item.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.delete__button, .complete__button, .edit__button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.edit__button:hover{
+    background-color: rgba(0, 128, 255, 0.1);
+}
+
+.delete__button:hover {
+    background-color: rgba(240, 0, 0, 0.1);
+}
+
+.complete__button:hover {
+    background-color: rgba(0, 240, 0, 0.1);
+}

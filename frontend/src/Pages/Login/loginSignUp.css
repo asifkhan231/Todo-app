@@ -1,0 +1,96 @@
+.lg_si_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .login {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    gap: 5px;
+  }
+  
+  .login h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .text_fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .text_fields div {
+    position: relative;
+  }
+  
+  .text_fields .error {
+    color: #d32f2f;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    text-align: left;
+  }
+  
+  .MuiTextField-root {
+    width: 100%;
+  }
+  
+  .MuiButton-contained {
+    background-color: #1976d2;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    margin-top: 5px;
+    text-transform: capitalize;
+    transition: background-color 0.3s ease;
+  }
+  
+  .MuiButton-contained:hover {
+    background-color: #155a9d;
+  }
+  
+  .login p {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .login p a {
+    color: #1976d2;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .login p a:hover {
+    color: #0d47a1;
+  }
+  
+  @media (max-width: 768px) {
+    .login {
+      padding: 20px 30px;
+    }
+  
+    .login h3 {
+      font-size: 1.5rem;
+    }
+  
+    .MuiButton-contained {
+      font-size: 0.9rem;
+      padding: 8px 16px;
+    }
+  }
+  
